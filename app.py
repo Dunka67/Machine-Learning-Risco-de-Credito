@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score as acc
@@ -80,3 +81,12 @@ importancia = pd.DataFrame({
 }).sort_values(by='Importancia', ascending=False)
 
 print(importancia)
+
+plt.figure(figsize=(10,6))
+plt.barh(importancia['coluna name'], importancia['Importancia'], color='skyblue')
+plt.xlabel('Importância (%)')
+
+plt.title('Fatores que mais pesam na Decisão de Crédito (XGBoost)')
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.show()
